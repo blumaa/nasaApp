@@ -1,6 +1,7 @@
-let date = ''
+let startDate = ''
+let endDate = '2019-10-18'
 // console.log(date)
-let URL = `https://api.nasa.gov/neo/rest/v1/feed?start_date=${date}&end_date=${date}&api_key=Imx2vYrm3vfWkUvWGKQw6gFg5ZWgJbetcdo3AJad`
+let URL = `https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${startDate}&api_key=Imx2vYrm3vfWkUvWGKQw6gFg5ZWgJbetcdo3AJad`
 
 let allAsteroids = []
 let asteroidObjects = []
@@ -16,26 +17,24 @@ function getAsteroids(){
     .then(resp => resp.json())
     .then(asteroidData => {
       asteroidDataState = {...asteroidData.near_earth_objects}
-      // console.log(asteroidData)
       asteroidList.innerHTML = ""
-      allAsteroids = asteroidData
-      asteroidList.innerHTML = handleAsteroidDays(allAsteroids)
+      // allAsteroids = asteroidData
+      // console.log('all asteroids', allAsteroids)
+      asteroidList.innerHTML = handleAsteroidDays(asteroidDataState)
 
-      // asteroidList.innerHTML = handleAsteroids(allAsteroids)
-      // console.log(allAsteroids.near_earth_objects)
-      // const objects = Object.values(allAsteroids.near_earth_objects)
-      // console.log(objects)
-      // const date = Object.keys(asteroidData.near_earth_objects)
-      asteroidList.insertAdjacentHTML("beforebegin", date);
-      // createAsteroids(allAsteroids)
     })
 }
 
 // render daylist
 
-function handleAsteroidDays(asteroidData) {
-  const dayKeys = Object.keys(asteroidData.near_earth_objects)
-  return dayKeys.map(renderDay).join('')
+function handleAsteroidDays(asteroidDataState) {
+  console.log('asteroid data state', asteroidDataState)
+  console.log(Array.from(asteroidDataState))
+  const newAsteroids = asteroidDataState.forEach(asteroid => {
+    console.log(asteroid)
+  })
+  // const dayKeys = Object.keys(asteroidData.near_earth_objects)
+  // return dayKeys.map(renderDay).join('')
   // console.log(Object.keys(asteroidData.near_earth_objects))
 }
 

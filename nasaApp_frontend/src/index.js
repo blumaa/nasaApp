@@ -2,9 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('nasa app')
   getAsteroids()
 
-  document.getElementById('date-select').addEventListener('click', (event) => {
+  document.getElementById('date-select').addEventListener('click', () => {
     // console.log(event.target)
-    renderAsteroidList(event)
+    renderAsteroidList()
+
+    renderAsteroids()
   })
   // function repeatOften() {
   //   $("<main />").appendTo("body");
@@ -121,15 +123,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 })
-
-
-
-// Display a list of the closest asteroid objects on a card
-
-// each card should display
-// name
-// url
-// how much it missed by
-// if it's potentially hazardous
-// it it's a sentry object
-// the orbiting body
